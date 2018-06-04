@@ -31,9 +31,9 @@ class App extends Component {
     console.log(event.target.id);
     const i = event.target.id;
     let squares = JSON.parse(JSON.stringify(this.state.squares));
-    squares[i] = this.xIsNext ? 'X' : 'O';
+    squares[i] = this.xIsNext ? 'O' : 'X';
     const theWinner = this.calculateWinner(squares);
-    this.xIsNext = !(this.xIsNext); 
+    this.xIsNext = !(this.xIsNext);
     this.render();
     this.setState({
       squares: squares,
@@ -50,8 +50,8 @@ class App extends Component {
         this.state.squares[a] === this.state.squares[b] && 
         this.state.squares[a] === this.state.squares[c]) {
           this.setState(
-            this.state.winner = this.state.squares[a],
-            this.state.winningLine = this.lines[i],
+            {winner: this.state.squares[a],
+             winningLine: this.lines[i]}
           )
             return {player: this.state.squares[a], winningLine: this.lines[i]}
         }
