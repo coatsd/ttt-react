@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -34,7 +34,6 @@ class App extends Component {
     squares[i] = this.xIsNext ? 'O' : 'X';
     const theWinner = this.calculateWinner(squares);
     this.xIsNext = !(this.xIsNext);
-    this.render();
     this.setState({
       squares: squares,
       xIsNext: !this.state.xIsNext,
@@ -43,17 +42,13 @@ class App extends Component {
     });
   }
 
-  calculateWinner() {
+  calculateWinner(squares) {
     for (let i = 0; i < this.lines.length; i++) {
         const [a, b, c] = this.lines[i];       
-        if (this.state.squares[a] && 
-        this.state.squares[a] === this.state.squares[b] && 
-        this.state.squares[a] === this.state.squares[c]) {
-          this.setState(
-            {winner: this.state.squares[a],
-             winningLine: this.lines[i]}
-          )
-            return {player: this.state.squares[a], winningLine: this.lines[i]}
+        if (squares[a] && 
+        squares[a] === squares[b] && 
+        squares[a] === squares[c]) {
+            return {player: squares[a], winningLine: this.lines[i]}
         }
     }
     return {player: null, winningLine: []}

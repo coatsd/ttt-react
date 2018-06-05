@@ -26,6 +26,11 @@ ol, ul {
   color:red;
 }
 
+.row {
+  clear: left;
+  float: left;
+}
+
 .square {
   background: #fff;
   border: 1px solid #999;
